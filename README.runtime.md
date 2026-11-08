@@ -1,32 +1,27 @@
-# Featured Tags
+# .NET Runtime
 
+## Featured Tags
+
+* `10.0` (Long-Term Support)
+  * `docker pull mcr.microsoft.com/dotnet/runtime:10.0`
+* `9.0` (Standard Support)
+  * `docker pull mcr.microsoft.com/dotnet/runtime:9.0`
 * `8.0` (Long-Term Support)
   * `docker pull mcr.microsoft.com/dotnet/runtime:8.0`
-* `7.0` (Standard Support)
-  * `docker pull mcr.microsoft.com/dotnet/runtime:7.0`
-* `6.0` (Long-Term Support)
-  * `docker pull mcr.microsoft.com/dotnet/runtime:6.0`
 
-# About
+## About
 
 This image contains the .NET runtimes and libraries and is optimized for running .NET apps in production.
 
 Watch [discussions](https://github.com/dotnet/dotnet-docker/discussions/categories/announcements) for Docker-related .NET announcements.
 
-## New: Ubuntu Chiseled Images
+## Usage
 
-Ubuntu Chiseled .NET images are a type of "distroless" container image that contain only the minimal set of packages .NET needs, with everything else removed.
-These images offer dramatically smaller deployment sizes and attack surface by including only the minimal set of packages required to run .NET applications.
+The [.NET Docker samples](https://github.com/dotnet/dotnet-docker/blob/main/samples/README.md) show various ways to use .NET and Docker together. See [Introduction to .NET and Docker](https://learn.microsoft.com/dotnet/core/docker/introduction) to learn more.
 
-Please see the [Ubuntu Chiseled + .NET](https://github.com/dotnet/dotnet-docker/blob/main/documentation/ubuntu-chiseled.md) documentation page for more info.
+### Container sample: Run a simple application
 
-# Usage
-
-The [.NET Docker samples](https://github.com/dotnet/dotnet-docker/blob/main/samples/README.md) show various ways to use .NET and Docker together. See [Building Docker Images for .NET Applications](https://docs.microsoft.com/dotnet/core/docker/building-net-docker-images) to learn more.
-
-## Container sample: Run a simple application
-
-You can quickly run a container with a pre-built [.NET Docker image](https://hub.docker.com/_/microsoft-dotnet-samples/), based on the [.NET console sample](https://github.com/dotnet/dotnet-docker/blob/main/samples/dotnetapp/README.md).
+You can quickly run a container with a pre-built [.NET Docker image](https://github.com/dotnet/dotnet-docker/blob/main/README.samples.md), based on the [.NET console sample](https://github.com/dotnet/dotnet-docker/blob/main/samples/ConsoleApp/README.md).
 
 Type the following command to run a sample console application:
 
@@ -34,236 +29,231 @@ Type the following command to run a sample console application:
 docker run --rm mcr.microsoft.com/dotnet/samples
 ```
 
-# Image Variants
+## Image Variants
 
 .NET container images have several variants that offer different combinations of flexibility and deployment size.
 The [Image Variants documentation](https://github.com/dotnet/dotnet-docker/blob/main/documentation/image-variants.md) contains a summary of the image variants and their use-cases.
 
-# Related Repositories
+### Distroless images
+
+.NET [distroless container images](https://github.com/dotnet/dotnet-docker/blob/main/documentation/distroless.md) contain only the minimal set of packages .NET needs, with everything else removed.
+Due to their limited set of packages, distroless containers have a minimized security attack surface, smaller deployment sizes, and faster start-up time compared to their non-distroless counterparts.
+They contain the following features:
+
+* Minimal set of packages required for .NET applications
+* Non-root user by default
+* No package manager
+* No shell
+
+.NET offers distroless images for [Azure Linux](https://github.com/dotnet/dotnet-docker/blob/main/documentation/azurelinux.md) and [Ubuntu (Chiseled)](https://github.com/dotnet/dotnet-docker/blob/main/documentation/ubuntu-chiseled.md).
+
+## Related Repositories
 
 .NET:
 
-* [dotnet](https://hub.docker.com/_/microsoft-dotnet/): .NET
-* [dotnet/sdk](https://hub.docker.com/_/microsoft-dotnet-sdk/): .NET SDK
-* [dotnet/aspnet](https://hub.docker.com/_/microsoft-dotnet-aspnet/): ASP.NET Core Runtime
-* [dotnet/runtime-deps](https://hub.docker.com/_/microsoft-dotnet-runtime-deps/): .NET Runtime Dependencies
-* [dotnet/monitor](https://hub.docker.com/_/microsoft-dotnet-monitor/): .NET Monitor Tool
-* [dotnet/samples](https://hub.docker.com/_/microsoft-dotnet-samples/): .NET Samples
-* [dotnet/nightly/runtime](https://hub.docker.com/_/microsoft-dotnet-nightly-runtime/): .NET Runtime (Preview)
+* [dotnet](https://github.com/dotnet/dotnet-docker/blob/main/README.md): .NET
+* [dotnet/sdk](https://github.com/dotnet/dotnet-docker/blob/main/README.sdk.md): .NET SDK
+* [dotnet/aspnet](https://github.com/dotnet/dotnet-docker/blob/main/README.aspnet.md): ASP.NET Core Runtime
+* [dotnet/runtime-deps](https://github.com/dotnet/dotnet-docker/blob/main/README.runtime-deps.md): .NET Runtime Dependencies
+* [dotnet/monitor](https://github.com/dotnet/dotnet-docker/blob/main/README.monitor.md): .NET Monitor Tool
+* [dotnet/nightly/runtime](https://github.com/dotnet/dotnet-docker/blob/nightly/README.runtime.md): .NET Runtime (Preview)
+* [dotnet/samples](https://github.com/dotnet/dotnet-docker/blob/main/README.samples.md): .NET Samples
 
 .NET Framework:
 
-* [dotnet/framework](https://hub.docker.com/_/microsoft-dotnet-framework/): .NET Framework, ASP.NET and WCF
-* [dotnet/framework/samples](https://hub.docker.com/_/microsoft-dotnet-framework-samples/): .NET Framework, ASP.NET and WCF Samples
+* [dotnet/framework](https://github.com/microsoft/dotnet-framework-docker/blob/main/README.md): .NET Framework, ASP.NET and WCF
+* [dotnet/framework/samples](https://github.com/microsoft/dotnet-framework-docker/blob/main/README.samples.md): .NET Framework, ASP.NET and WCF Samples
 
-# Full Tag Listing
+## Full Tag Listing
 
-## Linux amd64 Tags
+### Linux amd64 Tags
+
 Tags | Dockerfile | OS Version
------------| -------------| -------------
-8.0.4-bookworm-slim-amd64, 8.0-bookworm-slim-amd64, 8.0.4-bookworm-slim, 8.0-bookworm-slim, 8.0.4, 8.0, latest | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/8.0/bookworm-slim/amd64/Dockerfile) | Debian 12
-8.0.4-alpine3.18-amd64, 8.0-alpine3.18-amd64, 8.0-alpine-amd64, 8.0.4-alpine3.18, 8.0-alpine3.18 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/8.0/alpine3.18/amd64/Dockerfile) | Alpine 3.18
-8.0.4-alpine3.19-amd64, 8.0-alpine3.19-amd64, 8.0.4-alpine3.19, 8.0-alpine3.19, 8.0-alpine | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/8.0/alpine3.19/amd64/Dockerfile) | Alpine 3.19
-8.0.4-jammy-amd64, 8.0-jammy-amd64, 8.0.4-jammy, 8.0-jammy | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/8.0/jammy/amd64/Dockerfile) | Ubuntu 22.04
-8.0.4-jammy-chiseled-amd64, 8.0-jammy-chiseled-amd64, 8.0.4-jammy-chiseled, 8.0-jammy-chiseled | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/8.0/jammy-chiseled/amd64/Dockerfile) | Ubuntu 22.04
-8.0.4-jammy-chiseled-extra-amd64, 8.0-jammy-chiseled-extra-amd64, 8.0.4-jammy-chiseled-extra, 8.0-jammy-chiseled-extra | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/8.0/jammy-chiseled-extra/amd64/Dockerfile) | Ubuntu 22.04
-8.0.4-cbl-mariner2.0-amd64, 8.0-cbl-mariner2.0-amd64, 8.0.4-cbl-mariner2.0, 8.0-cbl-mariner2.0 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/8.0/cbl-mariner2.0/amd64/Dockerfile) | CBL-Mariner 2.0
-8.0.4-cbl-mariner2.0-distroless-amd64, 8.0-cbl-mariner2.0-distroless-amd64, 8.0.4-cbl-mariner2.0-distroless, 8.0-cbl-mariner2.0-distroless | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/8.0/cbl-mariner2.0-distroless/amd64/Dockerfile) | CBL-Mariner 2.0-distroless
-8.0.4-cbl-mariner2.0-distroless-extra-amd64, 8.0-cbl-mariner2.0-distroless-extra-amd64, 8.0.4-cbl-mariner2.0-distroless-extra, 8.0-cbl-mariner2.0-distroless-extra | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/8.0/cbl-mariner2.0-distroless-extra/amd64/Dockerfile) | CBL-Mariner 2.0-distroless
-7.0.18-bookworm-slim-amd64, 7.0-bookworm-slim-amd64, 7.0.18-bookworm-slim, 7.0-bookworm-slim | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/7.0/bookworm-slim/amd64/Dockerfile) | Debian 12
-7.0.18-bullseye-slim-amd64, 7.0-bullseye-slim-amd64, 7.0.18-bullseye-slim, 7.0-bullseye-slim, 7.0.18, 7.0 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/7.0/bullseye-slim/amd64/Dockerfile) | Debian 11
-7.0.18-alpine3.18-amd64, 7.0-alpine3.18-amd64, 7.0-alpine-amd64, 7.0.18-alpine3.18, 7.0-alpine3.18 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/7.0/alpine3.18/amd64/Dockerfile) | Alpine 3.18
-7.0.18-alpine3.19-amd64, 7.0-alpine3.19-amd64, 7.0.18-alpine3.19, 7.0-alpine3.19, 7.0-alpine | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/7.0/alpine3.19/amd64/Dockerfile) | Alpine 3.19
-7.0.18-jammy-amd64, 7.0-jammy-amd64, 7.0.18-jammy, 7.0-jammy | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/7.0/jammy/amd64/Dockerfile) | Ubuntu 22.04
-7.0.18-jammy-chiseled-amd64, 7.0-jammy-chiseled-amd64, 7.0.18-jammy-chiseled, 7.0-jammy-chiseled | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/7.0/jammy-chiseled/amd64/Dockerfile) | Ubuntu 22.04
-7.0.18-jammy-chiseled-extra-amd64, 7.0-jammy-chiseled-extra-amd64, 7.0.18-jammy-chiseled-extra, 7.0-jammy-chiseled-extra | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/7.0/jammy-chiseled-extra/amd64/Dockerfile) | Ubuntu 22.04
-7.0.18-cbl-mariner2.0-amd64, 7.0-cbl-mariner2.0-amd64, 7.0.18-cbl-mariner2.0, 7.0-cbl-mariner2.0 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/7.0/cbl-mariner2.0/amd64/Dockerfile) | CBL-Mariner 2.0
-7.0.18-cbl-mariner2.0-distroless-amd64, 7.0-cbl-mariner2.0-distroless-amd64, 7.0.18-cbl-mariner2.0-distroless, 7.0-cbl-mariner2.0-distroless | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/7.0/cbl-mariner2.0-distroless/amd64/Dockerfile) | CBL-Mariner 2.0-distroless
-6.0.29-bookworm-slim-amd64, 6.0-bookworm-slim-amd64, 6.0.29-bookworm-slim, 6.0-bookworm-slim | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/6.0/bookworm-slim/amd64/Dockerfile) | Debian 12
-6.0.29-bullseye-slim-amd64, 6.0-bullseye-slim-amd64, 6.0.29-bullseye-slim, 6.0-bullseye-slim, 6.0.29, 6.0 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/6.0/bullseye-slim/amd64/Dockerfile) | Debian 11
-6.0.29-alpine3.18-amd64, 6.0-alpine3.18-amd64, 6.0-alpine-amd64, 6.0.29-alpine3.18, 6.0-alpine3.18, 6.0-alpine | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/6.0/alpine3.18/amd64/Dockerfile) | Alpine 3.18
-6.0.29-alpine3.19-amd64, 6.0-alpine3.19-amd64, 6.0.29-alpine3.19, 6.0-alpine3.19 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/6.0/alpine3.19/amd64/Dockerfile) | Alpine 3.19
-6.0.29-jammy-amd64, 6.0-jammy-amd64, 6.0.29-jammy, 6.0-jammy | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/6.0/jammy/amd64/Dockerfile) | Ubuntu 22.04
-6.0.29-jammy-chiseled-amd64, 6.0-jammy-chiseled-amd64, 6.0.29-jammy-chiseled, 6.0-jammy-chiseled | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/6.0/jammy-chiseled/amd64/Dockerfile) | Ubuntu 22.04
-6.0.29-jammy-chiseled-extra-amd64, 6.0-jammy-chiseled-extra-amd64, 6.0.29-jammy-chiseled-extra, 6.0-jammy-chiseled-extra | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/6.0/jammy-chiseled-extra/amd64/Dockerfile) | Ubuntu 22.04
-6.0.29-focal-amd64, 6.0-focal-amd64, 6.0.29-focal, 6.0-focal | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/6.0/focal/amd64/Dockerfile) | Ubuntu 20.04
-6.0.29-cbl-mariner2.0-amd64, 6.0-cbl-mariner2.0-amd64, 6.0.29-cbl-mariner2.0, 6.0-cbl-mariner2.0 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/6.0/cbl-mariner2.0/amd64/Dockerfile) | CBL-Mariner 2.0
-6.0.29-cbl-mariner2.0-distroless-amd64, 6.0-cbl-mariner2.0-distroless-amd64, 6.0.29-cbl-mariner2.0-distroless, 6.0-cbl-mariner2.0-distroless | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/6.0/cbl-mariner2.0-distroless/amd64/Dockerfile) | CBL-Mariner 2.0-distroless
+---- | ---------- | ----------
+11.0.0-rc.3-resolute-amd64, 11.0-resolute-amd64, 11.0.0-rc.3-resolute, 11.0-resolute, 11.0.0-rc.3, 11.0 | [Dockerfile](src/runtime/11.0/resolute/amd64/Dockerfile) | Ubuntu 26.04
+11.0.0-rc.3-resolute-chiseled-amd64, 11.0-resolute-chiseled-amd64, 11.0.0-rc.3-resolute-chiseled, 11.0-resolute-chiseled | [Dockerfile](src/runtime/11.0/resolute-chiseled/amd64/Dockerfile) | Ubuntu 26.04
+11.0.0-rc.3-resolute-chiseled-extra-amd64, 11.0-resolute-chiseled-extra-amd64, 11.0.0-rc.3-resolute-chiseled-extra, 11.0-resolute-chiseled-extra | [Dockerfile](src/runtime/11.0/resolute-chiseled-extra/amd64/Dockerfile) | Ubuntu 26.04
+11.0.0-rc.3-alpine3.24-amd64, 11.0-alpine3.24-amd64, 11.0-alpine-amd64, 11.0.0-rc.3-alpine3.24, 11.0-alpine3.24, 11.0-alpine | [Dockerfile](src/runtime/11.0/alpine3.24/amd64/Dockerfile) | Alpine 3.24
+11.0.0-rc.3-alpine3.24-extra-amd64, 11.0-alpine3.24-extra-amd64, 11.0-alpine-extra-amd64, 11.0.0-rc.3-alpine3.24-extra, 11.0-alpine3.24-extra, 11.0-alpine-extra | [Dockerfile](src/runtime/11.0/alpine3.24-extra/amd64/Dockerfile) | Alpine 3.24
+11.0.0-rc.3-azurelinux3.0-amd64, 11.0-azurelinux3.0-amd64, 11.0.0-rc.3-azurelinux3.0, 11.0-azurelinux3.0 | [Dockerfile](src/runtime/11.0/azurelinux3.0/amd64/Dockerfile) | Azure Linux 3.0
+11.0.0-rc.3-azurelinux3.0-distroless-amd64, 11.0-azurelinux3.0-distroless-amd64, 11.0.0-rc.3-azurelinux3.0-distroless, 11.0-azurelinux3.0-distroless | [Dockerfile](src/runtime/11.0/azurelinux3.0-distroless/amd64/Dockerfile) | Azure Linux 3.0
+11.0.0-rc.3-azurelinux3.0-distroless-extra-amd64, 11.0-azurelinux3.0-distroless-extra-amd64, 11.0.0-rc.3-azurelinux3.0-distroless-extra, 11.0-azurelinux3.0-distroless-extra | [Dockerfile](src/runtime/11.0/azurelinux3.0-distroless-extra/amd64/Dockerfile) | Azure Linux 3.0
+11.0.0-rc.3-azurelinux4.0-amd64, 11.0-azurelinux4.0-amd64, 11.0.0-rc.3-azurelinux4.0, 11.0-azurelinux4.0 | [Dockerfile](src/runtime/11.0/azurelinux4.0/amd64/Dockerfile) | Azure Linux 4.0
+11.0.0-rc.3-azurelinux4.0-distroless-amd64, 11.0-azurelinux4.0-distroless-amd64, 11.0.0-rc.3-azurelinux4.0-distroless, 11.0-azurelinux4.0-distroless | [Dockerfile](src/runtime/11.0/azurelinux4.0-distroless/amd64/Dockerfile) | Azure Linux 4.0
+11.0.0-rc.3-azurelinux4.0-distroless-extra-amd64, 11.0-azurelinux4.0-distroless-extra-amd64, 11.0.0-rc.3-azurelinux4.0-distroless-extra, 11.0-azurelinux4.0-distroless-extra | [Dockerfile](src/runtime/11.0/azurelinux4.0-distroless-extra/amd64/Dockerfile) | Azure Linux 4.0
+10.0.14-noble-amd64, 10.0-noble-amd64, 10.0.14-noble, 10.0-noble, 10.0.14, 10.0, latest | [Dockerfile](src/runtime/10.0/noble/amd64/Dockerfile) | Ubuntu 24.04
+10.0.14-noble-chiseled-amd64, 10.0-noble-chiseled-amd64, 10.0.14-noble-chiseled, 10.0-noble-chiseled | [Dockerfile](src/runtime/10.0/noble-chiseled/amd64/Dockerfile) | Ubuntu 24.04
+10.0.14-noble-chiseled-extra-amd64, 10.0-noble-chiseled-extra-amd64, 10.0.14-noble-chiseled-extra, 10.0-noble-chiseled-extra | [Dockerfile](src/runtime/10.0/noble-chiseled-extra/amd64/Dockerfile) | Ubuntu 24.04
+10.0.14-resolute-amd64, 10.0-resolute-amd64, 10.0.14-resolute, 10.0-resolute | [Dockerfile](src/runtime/10.0/resolute/amd64/Dockerfile) | Ubuntu 26.04
+10.0.14-resolute-chiseled-amd64, 10.0-resolute-chiseled-amd64, 10.0.14-resolute-chiseled, 10.0-resolute-chiseled | [Dockerfile](src/runtime/10.0/resolute-chiseled/amd64/Dockerfile) | Ubuntu 26.04
+10.0.14-resolute-chiseled-extra-amd64, 10.0-resolute-chiseled-extra-amd64, 10.0.14-resolute-chiseled-extra, 10.0-resolute-chiseled-extra | [Dockerfile](src/runtime/10.0/resolute-chiseled-extra/amd64/Dockerfile) | Ubuntu 26.04
+10.0.14-alpine3.24-amd64, 10.0-alpine3.24-amd64, 10.0-alpine-amd64, 10.0.14-alpine3.24, 10.0-alpine3.24, 10.0-alpine | [Dockerfile](src/runtime/10.0/alpine3.24/amd64/Dockerfile) | Alpine 3.24
+10.0.14-alpine3.24-extra-amd64, 10.0-alpine3.24-extra-amd64, 10.0-alpine-extra-amd64, 10.0.14-alpine3.24-extra, 10.0-alpine3.24-extra, 10.0-alpine-extra | [Dockerfile](src/runtime/10.0/alpine3.24-extra/amd64/Dockerfile) | Alpine 3.24
+10.0.14-azurelinux3.0-amd64, 10.0-azurelinux3.0-amd64, 10.0.14-azurelinux3.0, 10.0-azurelinux3.0 | [Dockerfile](src/runtime/10.0/azurelinux3.0/amd64/Dockerfile) | Azure Linux 3.0
+10.0.14-azurelinux3.0-distroless-amd64, 10.0-azurelinux3.0-distroless-amd64, 10.0.14-azurelinux3.0-distroless, 10.0-azurelinux3.0-distroless | [Dockerfile](src/runtime/10.0/azurelinux3.0-distroless/amd64/Dockerfile) | Azure Linux 3.0
+10.0.14-azurelinux3.0-distroless-extra-amd64, 10.0-azurelinux3.0-distroless-extra-amd64, 10.0.14-azurelinux3.0-distroless-extra, 10.0-azurelinux3.0-distroless-extra | [Dockerfile](src/runtime/10.0/azurelinux3.0-distroless-extra/amd64/Dockerfile) | Azure Linux 3.0
+9.0.22-bookworm-slim-amd64, 9.0-bookworm-slim-amd64, 9.0.22-bookworm-slim, 9.0-bookworm-slim, 9.0.22, 9.0 | [Dockerfile](src/runtime/9.0/bookworm-slim/amd64/Dockerfile) | Debian 12
+9.0.22-alpine3.24-amd64, 9.0-alpine3.24-amd64, 9.0-alpine-amd64, 9.0.22-alpine3.24, 9.0-alpine3.24, 9.0-alpine | [Dockerfile](src/runtime/9.0/alpine3.24/amd64/Dockerfile) | Alpine 3.24
+9.0.22-alpine3.24-extra-amd64, 9.0-alpine3.24-extra-amd64, 9.0-alpine-extra-amd64, 9.0.22-alpine3.24-extra, 9.0-alpine3.24-extra, 9.0-alpine-extra | [Dockerfile](src/runtime/9.0/alpine3.24-extra/amd64/Dockerfile) | Alpine 3.24
+9.0.22-noble-amd64, 9.0-noble-amd64, 9.0.22-noble, 9.0-noble | [Dockerfile](src/runtime/9.0/noble/amd64/Dockerfile) | Ubuntu 24.04
+9.0.22-noble-chiseled-amd64, 9.0-noble-chiseled-amd64, 9.0.22-noble-chiseled, 9.0-noble-chiseled | [Dockerfile](src/runtime/9.0/noble-chiseled/amd64/Dockerfile) | Ubuntu 24.04
+9.0.22-noble-chiseled-extra-amd64, 9.0-noble-chiseled-extra-amd64, 9.0.22-noble-chiseled-extra, 9.0-noble-chiseled-extra | [Dockerfile](src/runtime/9.0/noble-chiseled-extra/amd64/Dockerfile) | Ubuntu 24.04
+9.0.22-azurelinux3.0-amd64, 9.0-azurelinux3.0-amd64, 9.0.22-azurelinux3.0, 9.0-azurelinux3.0 | [Dockerfile](src/runtime/9.0/azurelinux3.0/amd64/Dockerfile) | Azure Linux 3.0
+9.0.22-azurelinux3.0-distroless-amd64, 9.0-azurelinux3.0-distroless-amd64, 9.0.22-azurelinux3.0-distroless, 9.0-azurelinux3.0-distroless | [Dockerfile](src/runtime/9.0/azurelinux3.0-distroless/amd64/Dockerfile) | Azure Linux 3.0
+9.0.22-azurelinux3.0-distroless-extra-amd64, 9.0-azurelinux3.0-distroless-extra-amd64, 9.0.22-azurelinux3.0-distroless-extra, 9.0-azurelinux3.0-distroless-extra | [Dockerfile](src/runtime/9.0/azurelinux3.0-distroless-extra/amd64/Dockerfile) | Azure Linux 3.0
+8.0.33-bookworm-slim-amd64, 8.0-bookworm-slim-amd64, 8.0.33-bookworm-slim, 8.0-bookworm-slim, 8.0.33, 8.0 | [Dockerfile](src/runtime/8.0/bookworm-slim/amd64/Dockerfile) | Debian 12
+8.0.33-alpine3.24-amd64, 8.0-alpine3.24-amd64, 8.0-alpine-amd64, 8.0.33-alpine3.24, 8.0-alpine3.24, 8.0-alpine | [Dockerfile](src/runtime/8.0/alpine3.24/amd64/Dockerfile) | Alpine 3.24
+8.0.33-alpine3.24-extra-amd64, 8.0-alpine3.24-extra-amd64, 8.0-alpine-extra-amd64, 8.0.33-alpine3.24-extra, 8.0-alpine3.24-extra, 8.0-alpine-extra | [Dockerfile](src/runtime/8.0/alpine3.24-extra/amd64/Dockerfile) | Alpine 3.24
+8.0.33-noble-amd64, 8.0-noble-amd64, 8.0.33-noble, 8.0-noble | [Dockerfile](src/runtime/8.0/noble/amd64/Dockerfile) | Ubuntu 24.04
+8.0.33-noble-chiseled-amd64, 8.0-noble-chiseled-amd64, 8.0.33-noble-chiseled, 8.0-noble-chiseled | [Dockerfile](src/runtime/8.0/noble-chiseled/amd64/Dockerfile) | Ubuntu 24.04
+8.0.33-noble-chiseled-extra-amd64, 8.0-noble-chiseled-extra-amd64, 8.0.33-noble-chiseled-extra, 8.0-noble-chiseled-extra | [Dockerfile](src/runtime/8.0/noble-chiseled-extra/amd64/Dockerfile) | Ubuntu 24.04
+8.0.33-jammy-amd64, 8.0-jammy-amd64, 8.0.33-jammy, 8.0-jammy | [Dockerfile](src/runtime/8.0/jammy/amd64/Dockerfile) | Ubuntu 22.04
+8.0.33-jammy-chiseled-amd64, 8.0-jammy-chiseled-amd64, 8.0.33-jammy-chiseled, 8.0-jammy-chiseled | [Dockerfile](src/runtime/8.0/jammy-chiseled/amd64/Dockerfile) | Ubuntu 22.04
+8.0.33-jammy-chiseled-extra-amd64, 8.0-jammy-chiseled-extra-amd64, 8.0.33-jammy-chiseled-extra, 8.0-jammy-chiseled-extra | [Dockerfile](src/runtime/8.0/jammy-chiseled-extra/amd64/Dockerfile) | Ubuntu 22.04
+8.0.33-azurelinux3.0-amd64, 8.0-azurelinux3.0-amd64, 8.0.33-azurelinux3.0, 8.0-azurelinux3.0 | [Dockerfile](src/runtime/8.0/azurelinux3.0/amd64/Dockerfile) | Azure Linux 3.0
+8.0.33-azurelinux3.0-distroless-amd64, 8.0-azurelinux3.0-distroless-amd64, 8.0.33-azurelinux3.0-distroless, 8.0-azurelinux3.0-distroless | [Dockerfile](src/runtime/8.0/azurelinux3.0-distroless/amd64/Dockerfile) | Azure Linux 3.0
+8.0.33-azurelinux3.0-distroless-extra-amd64, 8.0-azurelinux3.0-distroless-extra-amd64, 8.0.33-azurelinux3.0-distroless-extra, 8.0-azurelinux3.0-distroless-extra | [Dockerfile](src/runtime/8.0/azurelinux3.0-distroless-extra/amd64/Dockerfile) | Azure Linux 3.0
 
-##### .NET 9 Preview Tags
+### Linux arm64 Tags
+
 Tags | Dockerfile | OS Version
------------| -------------| -------------
-9.0.0-preview.3-bookworm-slim-amd64, 9.0-preview-bookworm-slim-amd64, 9.0.0-preview.3-bookworm-slim, 9.0-preview-bookworm-slim, 9.0.0-preview.3, 9.0-preview | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/9.0/bookworm-slim/amd64/Dockerfile) | Debian 12
-9.0.0-preview.3-alpine3.19-amd64, 9.0-preview-alpine3.19-amd64, 9.0-preview-alpine-amd64, 9.0.0-preview.3-alpine3.19, 9.0-preview-alpine3.19, 9.0-preview-alpine | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/9.0/alpine3.19/amd64/Dockerfile) | Alpine 3.19
-9.0.0-preview.3-jammy-amd64, 9.0-preview-jammy-amd64, 9.0.0-preview.3-jammy, 9.0-preview-jammy | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/9.0/jammy/amd64/Dockerfile) | Ubuntu 22.04
-9.0.0-preview.3-jammy-chiseled-amd64, 9.0-preview-jammy-chiseled-amd64, 9.0.0-preview.3-jammy-chiseled, 9.0-preview-jammy-chiseled | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/9.0/jammy-chiseled/amd64/Dockerfile) | Ubuntu 22.04
-9.0.0-preview.3-jammy-chiseled-extra-amd64, 9.0-preview-jammy-chiseled-extra-amd64, 9.0.0-preview.3-jammy-chiseled-extra, 9.0-preview-jammy-chiseled-extra | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/9.0/jammy-chiseled-extra/amd64/Dockerfile) | Ubuntu 22.04
-9.0.0-preview.3-cbl-mariner2.0-amd64, 9.0-preview-cbl-mariner2.0-amd64, 9.0.0-preview.3-cbl-mariner2.0, 9.0-preview-cbl-mariner2.0 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/9.0/cbl-mariner2.0/amd64/Dockerfile) | CBL-Mariner 2.0
-9.0.0-preview.3-cbl-mariner2.0-distroless-amd64, 9.0-preview-cbl-mariner2.0-distroless-amd64, 9.0.0-preview.3-cbl-mariner2.0-distroless, 9.0-preview-cbl-mariner2.0-distroless | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/9.0/cbl-mariner2.0-distroless/amd64/Dockerfile) | CBL-Mariner 2.0-distroless
-9.0.0-preview.3-cbl-mariner2.0-distroless-extra-amd64, 9.0-preview-cbl-mariner2.0-distroless-extra-amd64, 9.0.0-preview.3-cbl-mariner2.0-distroless-extra, 9.0-preview-cbl-mariner2.0-distroless-extra | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/9.0/cbl-mariner2.0-distroless-extra/amd64/Dockerfile) | CBL-Mariner 2.0-distroless
+---- | ---------- | ----------
+11.0.0-rc.3-resolute-arm64v8, 11.0-resolute-arm64v8, 11.0.0-rc.3-resolute, 11.0-resolute, 11.0.0-rc.3, 11.0 | [Dockerfile](src/runtime/11.0/resolute/arm64v8/Dockerfile) | Ubuntu 26.04
+11.0.0-rc.3-resolute-chiseled-arm64v8, 11.0-resolute-chiseled-arm64v8, 11.0.0-rc.3-resolute-chiseled, 11.0-resolute-chiseled | [Dockerfile](src/runtime/11.0/resolute-chiseled/arm64v8/Dockerfile) | Ubuntu 26.04
+11.0.0-rc.3-resolute-chiseled-extra-arm64v8, 11.0-resolute-chiseled-extra-arm64v8, 11.0.0-rc.3-resolute-chiseled-extra, 11.0-resolute-chiseled-extra | [Dockerfile](src/runtime/11.0/resolute-chiseled-extra/arm64v8/Dockerfile) | Ubuntu 26.04
+11.0.0-rc.3-alpine3.24-arm64v8, 11.0-alpine3.24-arm64v8, 11.0-alpine-arm64v8, 11.0.0-rc.3-alpine3.24, 11.0-alpine3.24, 11.0-alpine | [Dockerfile](src/runtime/11.0/alpine3.24/arm64v8/Dockerfile) | Alpine 3.24
+11.0.0-rc.3-alpine3.24-extra-arm64v8, 11.0-alpine3.24-extra-arm64v8, 11.0-alpine-extra-arm64v8, 11.0.0-rc.3-alpine3.24-extra, 11.0-alpine3.24-extra, 11.0-alpine-extra | [Dockerfile](src/runtime/11.0/alpine3.24-extra/arm64v8/Dockerfile) | Alpine 3.24
+11.0.0-rc.3-azurelinux3.0-arm64v8, 11.0-azurelinux3.0-arm64v8, 11.0.0-rc.3-azurelinux3.0, 11.0-azurelinux3.0 | [Dockerfile](src/runtime/11.0/azurelinux3.0/arm64v8/Dockerfile) | Azure Linux 3.0
+11.0.0-rc.3-azurelinux3.0-distroless-arm64v8, 11.0-azurelinux3.0-distroless-arm64v8, 11.0.0-rc.3-azurelinux3.0-distroless, 11.0-azurelinux3.0-distroless | [Dockerfile](src/runtime/11.0/azurelinux3.0-distroless/arm64v8/Dockerfile) | Azure Linux 3.0
+11.0.0-rc.3-azurelinux3.0-distroless-extra-arm64v8, 11.0-azurelinux3.0-distroless-extra-arm64v8, 11.0.0-rc.3-azurelinux3.0-distroless-extra, 11.0-azurelinux3.0-distroless-extra | [Dockerfile](src/runtime/11.0/azurelinux3.0-distroless-extra/arm64v8/Dockerfile) | Azure Linux 3.0
+11.0.0-rc.3-azurelinux4.0-arm64v8, 11.0-azurelinux4.0-arm64v8, 11.0.0-rc.3-azurelinux4.0, 11.0-azurelinux4.0 | [Dockerfile](src/runtime/11.0/azurelinux4.0/arm64v8/Dockerfile) | Azure Linux 4.0
+11.0.0-rc.3-azurelinux4.0-distroless-arm64v8, 11.0-azurelinux4.0-distroless-arm64v8, 11.0.0-rc.3-azurelinux4.0-distroless, 11.0-azurelinux4.0-distroless | [Dockerfile](src/runtime/11.0/azurelinux4.0-distroless/arm64v8/Dockerfile) | Azure Linux 4.0
+11.0.0-rc.3-azurelinux4.0-distroless-extra-arm64v8, 11.0-azurelinux4.0-distroless-extra-arm64v8, 11.0.0-rc.3-azurelinux4.0-distroless-extra, 11.0-azurelinux4.0-distroless-extra | [Dockerfile](src/runtime/11.0/azurelinux4.0-distroless-extra/arm64v8/Dockerfile) | Azure Linux 4.0
+10.0.14-noble-arm64v8, 10.0-noble-arm64v8, 10.0.14-noble, 10.0-noble, 10.0.14, 10.0, latest | [Dockerfile](src/runtime/10.0/noble/arm64v8/Dockerfile) | Ubuntu 24.04
+10.0.14-noble-chiseled-arm64v8, 10.0-noble-chiseled-arm64v8, 10.0.14-noble-chiseled, 10.0-noble-chiseled | [Dockerfile](src/runtime/10.0/noble-chiseled/arm64v8/Dockerfile) | Ubuntu 24.04
+10.0.14-noble-chiseled-extra-arm64v8, 10.0-noble-chiseled-extra-arm64v8, 10.0.14-noble-chiseled-extra, 10.0-noble-chiseled-extra | [Dockerfile](src/runtime/10.0/noble-chiseled-extra/arm64v8/Dockerfile) | Ubuntu 24.04
+10.0.14-resolute-arm64v8, 10.0-resolute-arm64v8, 10.0.14-resolute, 10.0-resolute | [Dockerfile](src/runtime/10.0/resolute/arm64v8/Dockerfile) | Ubuntu 26.04
+10.0.14-resolute-chiseled-arm64v8, 10.0-resolute-chiseled-arm64v8, 10.0.14-resolute-chiseled, 10.0-resolute-chiseled | [Dockerfile](src/runtime/10.0/resolute-chiseled/arm64v8/Dockerfile) | Ubuntu 26.04
+10.0.14-resolute-chiseled-extra-arm64v8, 10.0-resolute-chiseled-extra-arm64v8, 10.0.14-resolute-chiseled-extra, 10.0-resolute-chiseled-extra | [Dockerfile](src/runtime/10.0/resolute-chiseled-extra/arm64v8/Dockerfile) | Ubuntu 26.04
+10.0.14-alpine3.24-arm64v8, 10.0-alpine3.24-arm64v8, 10.0-alpine-arm64v8, 10.0.14-alpine3.24, 10.0-alpine3.24, 10.0-alpine | [Dockerfile](src/runtime/10.0/alpine3.24/arm64v8/Dockerfile) | Alpine 3.24
+10.0.14-alpine3.24-extra-arm64v8, 10.0-alpine3.24-extra-arm64v8, 10.0-alpine-extra-arm64v8, 10.0.14-alpine3.24-extra, 10.0-alpine3.24-extra, 10.0-alpine-extra | [Dockerfile](src/runtime/10.0/alpine3.24-extra/arm64v8/Dockerfile) | Alpine 3.24
+10.0.14-azurelinux3.0-arm64v8, 10.0-azurelinux3.0-arm64v8, 10.0.14-azurelinux3.0, 10.0-azurelinux3.0 | [Dockerfile](src/runtime/10.0/azurelinux3.0/arm64v8/Dockerfile) | Azure Linux 3.0
+10.0.14-azurelinux3.0-distroless-arm64v8, 10.0-azurelinux3.0-distroless-arm64v8, 10.0.14-azurelinux3.0-distroless, 10.0-azurelinux3.0-distroless | [Dockerfile](src/runtime/10.0/azurelinux3.0-distroless/arm64v8/Dockerfile) | Azure Linux 3.0
+10.0.14-azurelinux3.0-distroless-extra-arm64v8, 10.0-azurelinux3.0-distroless-extra-arm64v8, 10.0.14-azurelinux3.0-distroless-extra, 10.0-azurelinux3.0-distroless-extra | [Dockerfile](src/runtime/10.0/azurelinux3.0-distroless-extra/arm64v8/Dockerfile) | Azure Linux 3.0
+9.0.22-bookworm-slim-arm64v8, 9.0-bookworm-slim-arm64v8, 9.0.22-bookworm-slim, 9.0-bookworm-slim, 9.0.22, 9.0 | [Dockerfile](src/runtime/9.0/bookworm-slim/arm64v8/Dockerfile) | Debian 12
+9.0.22-alpine3.24-arm64v8, 9.0-alpine3.24-arm64v8, 9.0-alpine-arm64v8, 9.0.22-alpine3.24, 9.0-alpine3.24, 9.0-alpine | [Dockerfile](src/runtime/9.0/alpine3.24/arm64v8/Dockerfile) | Alpine 3.24
+9.0.22-alpine3.24-extra-arm64v8, 9.0-alpine3.24-extra-arm64v8, 9.0-alpine-extra-arm64v8, 9.0.22-alpine3.24-extra, 9.0-alpine3.24-extra, 9.0-alpine-extra | [Dockerfile](src/runtime/9.0/alpine3.24-extra/arm64v8/Dockerfile) | Alpine 3.24
+9.0.22-noble-arm64v8, 9.0-noble-arm64v8, 9.0.22-noble, 9.0-noble | [Dockerfile](src/runtime/9.0/noble/arm64v8/Dockerfile) | Ubuntu 24.04
+9.0.22-noble-chiseled-arm64v8, 9.0-noble-chiseled-arm64v8, 9.0.22-noble-chiseled, 9.0-noble-chiseled | [Dockerfile](src/runtime/9.0/noble-chiseled/arm64v8/Dockerfile) | Ubuntu 24.04
+9.0.22-noble-chiseled-extra-arm64v8, 9.0-noble-chiseled-extra-arm64v8, 9.0.22-noble-chiseled-extra, 9.0-noble-chiseled-extra | [Dockerfile](src/runtime/9.0/noble-chiseled-extra/arm64v8/Dockerfile) | Ubuntu 24.04
+9.0.22-azurelinux3.0-arm64v8, 9.0-azurelinux3.0-arm64v8, 9.0.22-azurelinux3.0, 9.0-azurelinux3.0 | [Dockerfile](src/runtime/9.0/azurelinux3.0/arm64v8/Dockerfile) | Azure Linux 3.0
+9.0.22-azurelinux3.0-distroless-arm64v8, 9.0-azurelinux3.0-distroless-arm64v8, 9.0.22-azurelinux3.0-distroless, 9.0-azurelinux3.0-distroless | [Dockerfile](src/runtime/9.0/azurelinux3.0-distroless/arm64v8/Dockerfile) | Azure Linux 3.0
+9.0.22-azurelinux3.0-distroless-extra-arm64v8, 9.0-azurelinux3.0-distroless-extra-arm64v8, 9.0.22-azurelinux3.0-distroless-extra, 9.0-azurelinux3.0-distroless-extra | [Dockerfile](src/runtime/9.0/azurelinux3.0-distroless-extra/arm64v8/Dockerfile) | Azure Linux 3.0
+8.0.33-bookworm-slim-arm64v8, 8.0-bookworm-slim-arm64v8, 8.0.33-bookworm-slim, 8.0-bookworm-slim, 8.0.33, 8.0 | [Dockerfile](src/runtime/8.0/bookworm-slim/arm64v8/Dockerfile) | Debian 12
+8.0.33-alpine3.24-arm64v8, 8.0-alpine3.24-arm64v8, 8.0-alpine-arm64v8, 8.0.33-alpine3.24, 8.0-alpine3.24, 8.0-alpine | [Dockerfile](src/runtime/8.0/alpine3.24/arm64v8/Dockerfile) | Alpine 3.24
+8.0.33-alpine3.24-extra-arm64v8, 8.0-alpine3.24-extra-arm64v8, 8.0-alpine-extra-arm64v8, 8.0.33-alpine3.24-extra, 8.0-alpine3.24-extra, 8.0-alpine-extra | [Dockerfile](src/runtime/8.0/alpine3.24-extra/arm64v8/Dockerfile) | Alpine 3.24
+8.0.33-noble-arm64v8, 8.0-noble-arm64v8, 8.0.33-noble, 8.0-noble | [Dockerfile](src/runtime/8.0/noble/arm64v8/Dockerfile) | Ubuntu 24.04
+8.0.33-noble-chiseled-arm64v8, 8.0-noble-chiseled-arm64v8, 8.0.33-noble-chiseled, 8.0-noble-chiseled | [Dockerfile](src/runtime/8.0/noble-chiseled/arm64v8/Dockerfile) | Ubuntu 24.04
+8.0.33-noble-chiseled-extra-arm64v8, 8.0-noble-chiseled-extra-arm64v8, 8.0.33-noble-chiseled-extra, 8.0-noble-chiseled-extra | [Dockerfile](src/runtime/8.0/noble-chiseled-extra/arm64v8/Dockerfile) | Ubuntu 24.04
+8.0.33-jammy-arm64v8, 8.0-jammy-arm64v8, 8.0.33-jammy, 8.0-jammy | [Dockerfile](src/runtime/8.0/jammy/arm64v8/Dockerfile) | Ubuntu 22.04
+8.0.33-jammy-chiseled-arm64v8, 8.0-jammy-chiseled-arm64v8, 8.0.33-jammy-chiseled, 8.0-jammy-chiseled | [Dockerfile](src/runtime/8.0/jammy-chiseled/arm64v8/Dockerfile) | Ubuntu 22.04
+8.0.33-jammy-chiseled-extra-arm64v8, 8.0-jammy-chiseled-extra-arm64v8, 8.0.33-jammy-chiseled-extra, 8.0-jammy-chiseled-extra | [Dockerfile](src/runtime/8.0/jammy-chiseled-extra/arm64v8/Dockerfile) | Ubuntu 22.04
+8.0.33-azurelinux3.0-arm64v8, 8.0-azurelinux3.0-arm64v8, 8.0.33-azurelinux3.0, 8.0-azurelinux3.0 | [Dockerfile](src/runtime/8.0/azurelinux3.0/arm64v8/Dockerfile) | Azure Linux 3.0
+8.0.33-azurelinux3.0-distroless-arm64v8, 8.0-azurelinux3.0-distroless-arm64v8, 8.0.33-azurelinux3.0-distroless, 8.0-azurelinux3.0-distroless | [Dockerfile](src/runtime/8.0/azurelinux3.0-distroless/arm64v8/Dockerfile) | Azure Linux 3.0
+8.0.33-azurelinux3.0-distroless-extra-arm64v8, 8.0-azurelinux3.0-distroless-extra-arm64v8, 8.0.33-azurelinux3.0-distroless-extra, 8.0-azurelinux3.0-distroless-extra | [Dockerfile](src/runtime/8.0/azurelinux3.0-distroless-extra/arm64v8/Dockerfile) | Azure Linux 3.0
 
-## Linux arm64 Tags
+### Linux arm32 Tags
+
 Tags | Dockerfile | OS Version
------------| -------------| -------------
-8.0.4-bookworm-slim-arm64v8, 8.0-bookworm-slim-arm64v8, 8.0.4-bookworm-slim, 8.0-bookworm-slim, 8.0.4, 8.0, latest | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/8.0/bookworm-slim/arm64v8/Dockerfile) | Debian 12
-8.0.4-alpine3.18-arm64v8, 8.0-alpine3.18-arm64v8, 8.0-alpine-arm64v8, 8.0.4-alpine3.18, 8.0-alpine3.18 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/8.0/alpine3.18/arm64v8/Dockerfile) | Alpine 3.18
-8.0.4-alpine3.19-arm64v8, 8.0-alpine3.19-arm64v8, 8.0.4-alpine3.19, 8.0-alpine3.19, 8.0-alpine | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/8.0/alpine3.19/arm64v8/Dockerfile) | Alpine 3.19
-8.0.4-jammy-arm64v8, 8.0-jammy-arm64v8, 8.0.4-jammy, 8.0-jammy | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/8.0/jammy/arm64v8/Dockerfile) | Ubuntu 22.04
-8.0.4-jammy-chiseled-arm64v8, 8.0-jammy-chiseled-arm64v8, 8.0.4-jammy-chiseled, 8.0-jammy-chiseled | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/8.0/jammy-chiseled/arm64v8/Dockerfile) | Ubuntu 22.04
-8.0.4-jammy-chiseled-extra-arm64v8, 8.0-jammy-chiseled-extra-arm64v8, 8.0.4-jammy-chiseled-extra, 8.0-jammy-chiseled-extra | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/8.0/jammy-chiseled-extra/arm64v8/Dockerfile) | Ubuntu 22.04
-8.0.4-cbl-mariner2.0-arm64v8, 8.0-cbl-mariner2.0-arm64v8, 8.0.4-cbl-mariner2.0, 8.0-cbl-mariner2.0 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/8.0/cbl-mariner2.0/arm64v8/Dockerfile) | CBL-Mariner 2.0
-8.0.4-cbl-mariner2.0-distroless-arm64v8, 8.0-cbl-mariner2.0-distroless-arm64v8, 8.0.4-cbl-mariner2.0-distroless, 8.0-cbl-mariner2.0-distroless | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/8.0/cbl-mariner2.0-distroless/arm64v8/Dockerfile) | CBL-Mariner 2.0-distroless
-8.0.4-cbl-mariner2.0-distroless-extra-arm64v8, 8.0-cbl-mariner2.0-distroless-extra-arm64v8, 8.0.4-cbl-mariner2.0-distroless-extra, 8.0-cbl-mariner2.0-distroless-extra | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/8.0/cbl-mariner2.0-distroless-extra/arm64v8/Dockerfile) | CBL-Mariner 2.0-distroless
-7.0.18-bookworm-slim-arm64v8, 7.0-bookworm-slim-arm64v8, 7.0.18-bookworm-slim, 7.0-bookworm-slim | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/7.0/bookworm-slim/arm64v8/Dockerfile) | Debian 12
-7.0.18-bullseye-slim-arm64v8, 7.0-bullseye-slim-arm64v8, 7.0.18-bullseye-slim, 7.0-bullseye-slim, 7.0.18, 7.0 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/7.0/bullseye-slim/arm64v8/Dockerfile) | Debian 11
-7.0.18-alpine3.18-arm64v8, 7.0-alpine3.18-arm64v8, 7.0-alpine-arm64v8, 7.0.18-alpine3.18, 7.0-alpine3.18 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/7.0/alpine3.18/arm64v8/Dockerfile) | Alpine 3.18
-7.0.18-alpine3.19-arm64v8, 7.0-alpine3.19-arm64v8, 7.0.18-alpine3.19, 7.0-alpine3.19, 7.0-alpine | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/7.0/alpine3.19/arm64v8/Dockerfile) | Alpine 3.19
-7.0.18-jammy-arm64v8, 7.0-jammy-arm64v8, 7.0.18-jammy, 7.0-jammy | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/7.0/jammy/arm64v8/Dockerfile) | Ubuntu 22.04
-7.0.18-jammy-chiseled-arm64v8, 7.0-jammy-chiseled-arm64v8, 7.0.18-jammy-chiseled, 7.0-jammy-chiseled | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/7.0/jammy-chiseled/arm64v8/Dockerfile) | Ubuntu 22.04
-7.0.18-jammy-chiseled-extra-arm64v8, 7.0-jammy-chiseled-extra-arm64v8, 7.0.18-jammy-chiseled-extra, 7.0-jammy-chiseled-extra | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/7.0/jammy-chiseled-extra/arm64v8/Dockerfile) | Ubuntu 22.04
-7.0.18-cbl-mariner2.0-arm64v8, 7.0-cbl-mariner2.0-arm64v8, 7.0.18-cbl-mariner2.0, 7.0-cbl-mariner2.0 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/7.0/cbl-mariner2.0/arm64v8/Dockerfile) | CBL-Mariner 2.0
-7.0.18-cbl-mariner2.0-distroless-arm64v8, 7.0-cbl-mariner2.0-distroless-arm64v8, 7.0.18-cbl-mariner2.0-distroless, 7.0-cbl-mariner2.0-distroless | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/7.0/cbl-mariner2.0-distroless/arm64v8/Dockerfile) | CBL-Mariner 2.0-distroless
-6.0.29-bookworm-slim-arm64v8, 6.0-bookworm-slim-arm64v8, 6.0.29-bookworm-slim, 6.0-bookworm-slim | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/6.0/bookworm-slim/arm64v8/Dockerfile) | Debian 12
-6.0.29-bullseye-slim-arm64v8, 6.0-bullseye-slim-arm64v8, 6.0.29-bullseye-slim, 6.0-bullseye-slim, 6.0.29, 6.0 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/6.0/bullseye-slim/arm64v8/Dockerfile) | Debian 11
-6.0.29-alpine3.18-arm64v8, 6.0-alpine3.18-arm64v8, 6.0-alpine-arm64v8, 6.0.29-alpine3.18, 6.0-alpine3.18, 6.0-alpine | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/6.0/alpine3.18/arm64v8/Dockerfile) | Alpine 3.18
-6.0.29-alpine3.19-arm64v8, 6.0-alpine3.19-arm64v8, 6.0.29-alpine3.19, 6.0-alpine3.19 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/6.0/alpine3.19/arm64v8/Dockerfile) | Alpine 3.19
-6.0.29-jammy-arm64v8, 6.0-jammy-arm64v8, 6.0.29-jammy, 6.0-jammy | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/6.0/jammy/arm64v8/Dockerfile) | Ubuntu 22.04
-6.0.29-jammy-chiseled-arm64v8, 6.0-jammy-chiseled-arm64v8, 6.0.29-jammy-chiseled, 6.0-jammy-chiseled | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/6.0/jammy-chiseled/arm64v8/Dockerfile) | Ubuntu 22.04
-6.0.29-jammy-chiseled-extra-arm64v8, 6.0-jammy-chiseled-extra-arm64v8, 6.0.29-jammy-chiseled-extra, 6.0-jammy-chiseled-extra | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/6.0/jammy-chiseled-extra/arm64v8/Dockerfile) | Ubuntu 22.04
-6.0.29-focal-arm64v8, 6.0-focal-arm64v8, 6.0.29-focal, 6.0-focal | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/6.0/focal/arm64v8/Dockerfile) | Ubuntu 20.04
-6.0.29-cbl-mariner2.0-arm64v8, 6.0-cbl-mariner2.0-arm64v8, 6.0.29-cbl-mariner2.0, 6.0-cbl-mariner2.0 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/6.0/cbl-mariner2.0/arm64v8/Dockerfile) | CBL-Mariner 2.0
-6.0.29-cbl-mariner2.0-distroless-arm64v8, 6.0-cbl-mariner2.0-distroless-arm64v8, 6.0.29-cbl-mariner2.0-distroless, 6.0-cbl-mariner2.0-distroless | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/6.0/cbl-mariner2.0-distroless/arm64v8/Dockerfile) | CBL-Mariner 2.0-distroless
+---- | ---------- | ----------
+11.0.0-rc.3-resolute-arm32v7, 11.0-resolute-arm32v7, 11.0.0-rc.3-resolute, 11.0-resolute, 11.0.0-rc.3, 11.0 | [Dockerfile](src/runtime/11.0/resolute/arm32v7/Dockerfile) | Ubuntu 26.04
+11.0.0-rc.3-resolute-chiseled-arm32v7, 11.0-resolute-chiseled-arm32v7, 11.0.0-rc.3-resolute-chiseled, 11.0-resolute-chiseled | [Dockerfile](src/runtime/11.0/resolute-chiseled/arm32v7/Dockerfile) | Ubuntu 26.04
+11.0.0-rc.3-resolute-chiseled-extra-arm32v7, 11.0-resolute-chiseled-extra-arm32v7, 11.0.0-rc.3-resolute-chiseled-extra, 11.0-resolute-chiseled-extra | [Dockerfile](src/runtime/11.0/resolute-chiseled-extra/arm32v7/Dockerfile) | Ubuntu 26.04
+11.0.0-rc.3-alpine3.24-arm32v7, 11.0-alpine3.24-arm32v7, 11.0-alpine-arm32v7, 11.0.0-rc.3-alpine3.24, 11.0-alpine3.24, 11.0-alpine | [Dockerfile](src/runtime/11.0/alpine3.24/arm32v7/Dockerfile) | Alpine 3.24
+11.0.0-rc.3-alpine3.24-extra-arm32v7, 11.0-alpine3.24-extra-arm32v7, 11.0-alpine-extra-arm32v7, 11.0.0-rc.3-alpine3.24-extra, 11.0-alpine3.24-extra, 11.0-alpine-extra | [Dockerfile](src/runtime/11.0/alpine3.24-extra/arm32v7/Dockerfile) | Alpine 3.24
+10.0.14-noble-arm32v7, 10.0-noble-arm32v7, 10.0.14-noble, 10.0-noble, 10.0.14, 10.0, latest | [Dockerfile](src/runtime/10.0/noble/arm32v7/Dockerfile) | Ubuntu 24.04
+10.0.14-noble-chiseled-arm32v7, 10.0-noble-chiseled-arm32v7, 10.0.14-noble-chiseled, 10.0-noble-chiseled | [Dockerfile](src/runtime/10.0/noble-chiseled/arm32v7/Dockerfile) | Ubuntu 24.04
+10.0.14-noble-chiseled-extra-arm32v7, 10.0-noble-chiseled-extra-arm32v7, 10.0.14-noble-chiseled-extra, 10.0-noble-chiseled-extra | [Dockerfile](src/runtime/10.0/noble-chiseled-extra/arm32v7/Dockerfile) | Ubuntu 24.04
+10.0.14-resolute-arm32v7, 10.0-resolute-arm32v7, 10.0.14-resolute, 10.0-resolute | [Dockerfile](src/runtime/10.0/resolute/arm32v7/Dockerfile) | Ubuntu 26.04
+10.0.14-resolute-chiseled-arm32v7, 10.0-resolute-chiseled-arm32v7, 10.0.14-resolute-chiseled, 10.0-resolute-chiseled | [Dockerfile](src/runtime/10.0/resolute-chiseled/arm32v7/Dockerfile) | Ubuntu 26.04
+10.0.14-resolute-chiseled-extra-arm32v7, 10.0-resolute-chiseled-extra-arm32v7, 10.0.14-resolute-chiseled-extra, 10.0-resolute-chiseled-extra | [Dockerfile](src/runtime/10.0/resolute-chiseled-extra/arm32v7/Dockerfile) | Ubuntu 26.04
+10.0.14-alpine3.24-arm32v7, 10.0-alpine3.24-arm32v7, 10.0-alpine-arm32v7, 10.0.14-alpine3.24, 10.0-alpine3.24, 10.0-alpine | [Dockerfile](src/runtime/10.0/alpine3.24/arm32v7/Dockerfile) | Alpine 3.24
+10.0.14-alpine3.24-extra-arm32v7, 10.0-alpine3.24-extra-arm32v7, 10.0-alpine-extra-arm32v7, 10.0.14-alpine3.24-extra, 10.0-alpine3.24-extra, 10.0-alpine-extra | [Dockerfile](src/runtime/10.0/alpine3.24-extra/arm32v7/Dockerfile) | Alpine 3.24
+9.0.22-bookworm-slim-arm32v7, 9.0-bookworm-slim-arm32v7, 9.0.22-bookworm-slim, 9.0-bookworm-slim, 9.0.22, 9.0 | [Dockerfile](src/runtime/9.0/bookworm-slim/arm32v7/Dockerfile) | Debian 12
+9.0.22-alpine3.24-arm32v7, 9.0-alpine3.24-arm32v7, 9.0-alpine-arm32v7, 9.0.22-alpine3.24, 9.0-alpine3.24, 9.0-alpine | [Dockerfile](src/runtime/9.0/alpine3.24/arm32v7/Dockerfile) | Alpine 3.24
+9.0.22-alpine3.24-extra-arm32v7, 9.0-alpine3.24-extra-arm32v7, 9.0-alpine-extra-arm32v7, 9.0.22-alpine3.24-extra, 9.0-alpine3.24-extra, 9.0-alpine-extra | [Dockerfile](src/runtime/9.0/alpine3.24-extra/arm32v7/Dockerfile) | Alpine 3.24
+9.0.22-noble-arm32v7, 9.0-noble-arm32v7, 9.0.22-noble, 9.0-noble | [Dockerfile](src/runtime/9.0/noble/arm32v7/Dockerfile) | Ubuntu 24.04
+9.0.22-noble-chiseled-arm32v7, 9.0-noble-chiseled-arm32v7, 9.0.22-noble-chiseled, 9.0-noble-chiseled | [Dockerfile](src/runtime/9.0/noble-chiseled/arm32v7/Dockerfile) | Ubuntu 24.04
+9.0.22-noble-chiseled-extra-arm32v7, 9.0-noble-chiseled-extra-arm32v7, 9.0.22-noble-chiseled-extra, 9.0-noble-chiseled-extra | [Dockerfile](src/runtime/9.0/noble-chiseled-extra/arm32v7/Dockerfile) | Ubuntu 24.04
+8.0.33-bookworm-slim-arm32v7, 8.0-bookworm-slim-arm32v7, 8.0.33-bookworm-slim, 8.0-bookworm-slim, 8.0.33, 8.0 | [Dockerfile](src/runtime/8.0/bookworm-slim/arm32v7/Dockerfile) | Debian 12
+8.0.33-alpine3.24-arm32v7, 8.0-alpine3.24-arm32v7, 8.0-alpine-arm32v7, 8.0.33-alpine3.24, 8.0-alpine3.24, 8.0-alpine | [Dockerfile](src/runtime/8.0/alpine3.24/arm32v7/Dockerfile) | Alpine 3.24
+8.0.33-alpine3.24-extra-arm32v7, 8.0-alpine3.24-extra-arm32v7, 8.0-alpine-extra-arm32v7, 8.0.33-alpine3.24-extra, 8.0-alpine3.24-extra, 8.0-alpine-extra | [Dockerfile](src/runtime/8.0/alpine3.24-extra/arm32v7/Dockerfile) | Alpine 3.24
+8.0.33-jammy-arm32v7, 8.0-jammy-arm32v7, 8.0.33-jammy, 8.0-jammy | [Dockerfile](src/runtime/8.0/jammy/arm32v7/Dockerfile) | Ubuntu 22.04
+8.0.33-jammy-chiseled-arm32v7, 8.0-jammy-chiseled-arm32v7, 8.0.33-jammy-chiseled, 8.0-jammy-chiseled | [Dockerfile](src/runtime/8.0/jammy-chiseled/arm32v7/Dockerfile) | Ubuntu 22.04
+8.0.33-jammy-chiseled-extra-arm32v7, 8.0-jammy-chiseled-extra-arm32v7, 8.0.33-jammy-chiseled-extra, 8.0-jammy-chiseled-extra | [Dockerfile](src/runtime/8.0/jammy-chiseled-extra/arm32v7/Dockerfile) | Ubuntu 22.04
 
-##### .NET 9 Preview Tags
+### Windows amd64 Tags
+
 Tags | Dockerfile | OS Version
------------| -------------| -------------
-9.0.0-preview.3-bookworm-slim-arm64v8, 9.0-preview-bookworm-slim-arm64v8, 9.0.0-preview.3-bookworm-slim, 9.0-preview-bookworm-slim, 9.0.0-preview.3, 9.0-preview | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/9.0/bookworm-slim/arm64v8/Dockerfile) | Debian 12
-9.0.0-preview.3-alpine3.19-arm64v8, 9.0-preview-alpine3.19-arm64v8, 9.0-preview-alpine-arm64v8, 9.0.0-preview.3-alpine3.19, 9.0-preview-alpine3.19, 9.0-preview-alpine | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/9.0/alpine3.19/arm64v8/Dockerfile) | Alpine 3.19
-9.0.0-preview.3-jammy-arm64v8, 9.0-preview-jammy-arm64v8, 9.0.0-preview.3-jammy, 9.0-preview-jammy | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/9.0/jammy/arm64v8/Dockerfile) | Ubuntu 22.04
-9.0.0-preview.3-jammy-chiseled-arm64v8, 9.0-preview-jammy-chiseled-arm64v8, 9.0.0-preview.3-jammy-chiseled, 9.0-preview-jammy-chiseled | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/9.0/jammy-chiseled/arm64v8/Dockerfile) | Ubuntu 22.04
-9.0.0-preview.3-jammy-chiseled-extra-arm64v8, 9.0-preview-jammy-chiseled-extra-arm64v8, 9.0.0-preview.3-jammy-chiseled-extra, 9.0-preview-jammy-chiseled-extra | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/9.0/jammy-chiseled-extra/arm64v8/Dockerfile) | Ubuntu 22.04
-9.0.0-preview.3-cbl-mariner2.0-arm64v8, 9.0-preview-cbl-mariner2.0-arm64v8, 9.0.0-preview.3-cbl-mariner2.0, 9.0-preview-cbl-mariner2.0 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/9.0/cbl-mariner2.0/arm64v8/Dockerfile) | CBL-Mariner 2.0
-9.0.0-preview.3-cbl-mariner2.0-distroless-arm64v8, 9.0-preview-cbl-mariner2.0-distroless-arm64v8, 9.0.0-preview.3-cbl-mariner2.0-distroless, 9.0-preview-cbl-mariner2.0-distroless | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/9.0/cbl-mariner2.0-distroless/arm64v8/Dockerfile) | CBL-Mariner 2.0-distroless
-9.0.0-preview.3-cbl-mariner2.0-distroless-extra-arm64v8, 9.0-preview-cbl-mariner2.0-distroless-extra-arm64v8, 9.0.0-preview.3-cbl-mariner2.0-distroless-extra, 9.0-preview-cbl-mariner2.0-distroless-extra | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/9.0/cbl-mariner2.0-distroless-extra/arm64v8/Dockerfile) | CBL-Mariner 2.0-distroless
+---- | ---------- | ----------
+11.0.0-rc.3-nanoserver-ltsc2025, 11.0-nanoserver-ltsc2025 | [Dockerfile](src/runtime/11.0/nanoserver-ltsc2025/amd64/Dockerfile) | Nano Server 2025
+11.0.0-rc.3-windowsservercore-ltsc2025, 11.0-windowsservercore-ltsc2025 | [Dockerfile](src/runtime/11.0/windowsservercore-ltsc2025/amd64/Dockerfile) | Windows Server Core 2025
+10.0.14-nanoserver-ltsc2025, 10.0-nanoserver-ltsc2025 | [Dockerfile](src/runtime/10.0/nanoserver-ltsc2025/amd64/Dockerfile) | Nano Server 2025
+10.0.14-windowsservercore-ltsc2025, 10.0-windowsservercore-ltsc2025 | [Dockerfile](src/runtime/10.0/windowsservercore-ltsc2025/amd64/Dockerfile) | Windows Server Core 2025
+10.0.14-nanoserver-ltsc2022, 10.0-nanoserver-ltsc2022 | [Dockerfile](src/runtime/10.0/nanoserver-ltsc2022/amd64/Dockerfile) | Nano Server 2022
+10.0.14-windowsservercore-ltsc2022, 10.0-windowsservercore-ltsc2022 | [Dockerfile](src/runtime/10.0/windowsservercore-ltsc2022/amd64/Dockerfile) | Windows Server Core 2022
+9.0.22-nanoserver-ltsc2025, 9.0-nanoserver-ltsc2025 | [Dockerfile](src/runtime/9.0/nanoserver-ltsc2025/amd64/Dockerfile) | Nano Server 2025
+9.0.22-windowsservercore-ltsc2025, 9.0-windowsservercore-ltsc2025 | [Dockerfile](src/runtime/9.0/windowsservercore-ltsc2025/amd64/Dockerfile) | Windows Server Core 2025
+9.0.22-nanoserver-ltsc2022, 9.0-nanoserver-ltsc2022 | [Dockerfile](src/runtime/9.0/nanoserver-ltsc2022/amd64/Dockerfile) | Nano Server 2022
+9.0.22-windowsservercore-ltsc2022, 9.0-windowsservercore-ltsc2022 | [Dockerfile](src/runtime/9.0/windowsservercore-ltsc2022/amd64/Dockerfile) | Windows Server Core 2022
+9.0.22-nanoserver-1809, 9.0-nanoserver-1809 | [Dockerfile](src/runtime/9.0/nanoserver-1809/amd64/Dockerfile) | Nano Server, version 1809
+9.0.22-windowsservercore-ltsc2019, 9.0-windowsservercore-ltsc2019 | [Dockerfile](src/runtime/9.0/windowsservercore-ltsc2019/amd64/Dockerfile) | Windows Server Core 2019
+8.0.33-nanoserver-ltsc2025, 8.0-nanoserver-ltsc2025 | [Dockerfile](src/runtime/8.0/nanoserver-ltsc2025/amd64/Dockerfile) | Nano Server 2025
+8.0.33-windowsservercore-ltsc2025, 8.0-windowsservercore-ltsc2025 | [Dockerfile](src/runtime/8.0/windowsservercore-ltsc2025/amd64/Dockerfile) | Windows Server Core 2025
+8.0.33-nanoserver-ltsc2022, 8.0-nanoserver-ltsc2022 | [Dockerfile](src/runtime/8.0/nanoserver-ltsc2022/amd64/Dockerfile) | Nano Server 2022
+8.0.33-windowsservercore-ltsc2022, 8.0-windowsservercore-ltsc2022 | [Dockerfile](src/runtime/8.0/windowsservercore-ltsc2022/amd64/Dockerfile) | Windows Server Core 2022
+8.0.33-nanoserver-1809, 8.0-nanoserver-1809 | [Dockerfile](src/runtime/8.0/nanoserver-1809/amd64/Dockerfile) | Nano Server, version 1809
+8.0.33-windowsservercore-ltsc2019, 8.0-windowsservercore-ltsc2019 | [Dockerfile](src/runtime/8.0/windowsservercore-ltsc2019/amd64/Dockerfile) | Windows Server Core 2019
 
-## Linux arm32 Tags
-Tags | Dockerfile | OS Version
------------| -------------| -------------
-8.0.4-bookworm-slim-arm32v7, 8.0-bookworm-slim-arm32v7, 8.0.4-bookworm-slim, 8.0-bookworm-slim, 8.0.4, 8.0, latest | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/8.0/bookworm-slim/arm32v7/Dockerfile) | Debian 12
-8.0.4-alpine3.18-arm32v7, 8.0-alpine3.18-arm32v7, 8.0-alpine-arm32v7, 8.0.4-alpine3.18, 8.0-alpine3.18 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/8.0/alpine3.18/arm32v7/Dockerfile) | Alpine 3.18
-8.0.4-alpine3.19-arm32v7, 8.0-alpine3.19-arm32v7, 8.0.4-alpine3.19, 8.0-alpine3.19, 8.0-alpine | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/8.0/alpine3.19/arm32v7/Dockerfile) | Alpine 3.19
-8.0.4-jammy-arm32v7, 8.0-jammy-arm32v7, 8.0.4-jammy, 8.0-jammy | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/8.0/jammy/arm32v7/Dockerfile) | Ubuntu 22.04
-8.0.4-jammy-chiseled-arm32v7, 8.0-jammy-chiseled-arm32v7, 8.0.4-jammy-chiseled, 8.0-jammy-chiseled | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/8.0/jammy-chiseled/arm32v7/Dockerfile) | Ubuntu 22.04
-8.0.4-jammy-chiseled-extra-arm32v7, 8.0-jammy-chiseled-extra-arm32v7, 8.0.4-jammy-chiseled-extra, 8.0-jammy-chiseled-extra | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/8.0/jammy-chiseled-extra/arm32v7/Dockerfile) | Ubuntu 22.04
-7.0.18-bookworm-slim-arm32v7, 7.0-bookworm-slim-arm32v7, 7.0.18-bookworm-slim, 7.0-bookworm-slim | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/7.0/bookworm-slim/arm32v7/Dockerfile) | Debian 12
-7.0.18-bullseye-slim-arm32v7, 7.0-bullseye-slim-arm32v7, 7.0.18-bullseye-slim, 7.0-bullseye-slim, 7.0.18, 7.0 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/7.0/bullseye-slim/arm32v7/Dockerfile) | Debian 11
-7.0.18-alpine3.18-arm32v7, 7.0-alpine3.18-arm32v7, 7.0-alpine-arm32v7, 7.0.18-alpine3.18, 7.0-alpine3.18 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/7.0/alpine3.18/arm32v7/Dockerfile) | Alpine 3.18
-7.0.18-alpine3.19-arm32v7, 7.0-alpine3.19-arm32v7, 7.0.18-alpine3.19, 7.0-alpine3.19, 7.0-alpine | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/7.0/alpine3.19/arm32v7/Dockerfile) | Alpine 3.19
-7.0.18-jammy-arm32v7, 7.0-jammy-arm32v7, 7.0.18-jammy, 7.0-jammy | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/7.0/jammy/arm32v7/Dockerfile) | Ubuntu 22.04
-7.0.18-jammy-chiseled-arm32v7, 7.0-jammy-chiseled-arm32v7, 7.0.18-jammy-chiseled, 7.0-jammy-chiseled | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/7.0/jammy-chiseled/arm32v7/Dockerfile) | Ubuntu 22.04
-7.0.18-jammy-chiseled-extra-arm32v7, 7.0-jammy-chiseled-extra-arm32v7, 7.0.18-jammy-chiseled-extra, 7.0-jammy-chiseled-extra | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/7.0/jammy-chiseled-extra/arm32v7/Dockerfile) | Ubuntu 22.04
-6.0.29-bookworm-slim-arm32v7, 6.0-bookworm-slim-arm32v7, 6.0.29-bookworm-slim, 6.0-bookworm-slim | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/6.0/bookworm-slim/arm32v7/Dockerfile) | Debian 12
-6.0.29-bullseye-slim-arm32v7, 6.0-bullseye-slim-arm32v7, 6.0.29-bullseye-slim, 6.0-bullseye-slim, 6.0.29, 6.0 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/6.0/bullseye-slim/arm32v7/Dockerfile) | Debian 11
-6.0.29-alpine3.18-arm32v7, 6.0-alpine3.18-arm32v7, 6.0-alpine-arm32v7, 6.0.29-alpine3.18, 6.0-alpine3.18, 6.0-alpine | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/6.0/alpine3.18/arm32v7/Dockerfile) | Alpine 3.18
-6.0.29-alpine3.19-arm32v7, 6.0-alpine3.19-arm32v7, 6.0.29-alpine3.19, 6.0-alpine3.19 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/6.0/alpine3.19/arm32v7/Dockerfile) | Alpine 3.19
-6.0.29-jammy-arm32v7, 6.0-jammy-arm32v7, 6.0.29-jammy, 6.0-jammy | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/6.0/jammy/arm32v7/Dockerfile) | Ubuntu 22.04
-6.0.29-jammy-chiseled-arm32v7, 6.0-jammy-chiseled-arm32v7, 6.0.29-jammy-chiseled, 6.0-jammy-chiseled | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/6.0/jammy-chiseled/arm32v7/Dockerfile) | Ubuntu 22.04
-6.0.29-jammy-chiseled-extra-arm32v7, 6.0-jammy-chiseled-extra-arm32v7, 6.0.29-jammy-chiseled-extra, 6.0-jammy-chiseled-extra | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/6.0/jammy-chiseled-extra/arm32v7/Dockerfile) | Ubuntu 22.04
-6.0.29-focal-arm32v7, 6.0-focal-arm32v7, 6.0.29-focal, 6.0-focal | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/6.0/focal/arm32v7/Dockerfile) | Ubuntu 20.04
-
-##### .NET 9 Preview Tags
-Tags | Dockerfile | OS Version
------------| -------------| -------------
-9.0.0-preview.3-bookworm-slim-arm32v7, 9.0-preview-bookworm-slim-arm32v7, 9.0.0-preview.3-bookworm-slim, 9.0-preview-bookworm-slim, 9.0.0-preview.3, 9.0-preview | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/9.0/bookworm-slim/arm32v7/Dockerfile) | Debian 12
-9.0.0-preview.3-jammy-arm32v7, 9.0-preview-jammy-arm32v7, 9.0.0-preview.3-jammy, 9.0-preview-jammy | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/9.0/jammy/arm32v7/Dockerfile) | Ubuntu 22.04
-9.0.0-preview.3-jammy-chiseled-arm32v7, 9.0-preview-jammy-chiseled-arm32v7, 9.0.0-preview.3-jammy-chiseled, 9.0-preview-jammy-chiseled | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/9.0/jammy-chiseled/arm32v7/Dockerfile) | Ubuntu 22.04
-9.0.0-preview.3-jammy-chiseled-extra-arm32v7, 9.0-preview-jammy-chiseled-extra-arm32v7, 9.0.0-preview.3-jammy-chiseled-extra, 9.0-preview-jammy-chiseled-extra | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/9.0/jammy-chiseled-extra/arm32v7/Dockerfile) | Ubuntu 22.04
-
-## Nano Server 2022 amd64 Tags
-Tag | Dockerfile
----------| ---------------
-8.0.4-nanoserver-ltsc2022, 8.0-nanoserver-ltsc2022 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/8.0/nanoserver-ltsc2022/amd64/Dockerfile)
-7.0.18-nanoserver-ltsc2022, 7.0-nanoserver-ltsc2022, 7.0.18, 7.0 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/7.0/nanoserver-ltsc2022/amd64/Dockerfile)
-6.0.29-nanoserver-ltsc2022, 6.0-nanoserver-ltsc2022, 6.0.29, 6.0 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/6.0/nanoserver-ltsc2022/amd64/Dockerfile)
-
-##### .NET 9 Preview Tags
-Tag | Dockerfile
----------| ---------------
-9.0.0-preview.3-nanoserver-ltsc2022, 9.0-preview-nanoserver-ltsc2022 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/9.0/nanoserver-ltsc2022/amd64/Dockerfile)
-
-## Windows Server Core 2022 amd64 Tags
-Tag | Dockerfile
----------| ---------------
-8.0.4-windowsservercore-ltsc2022, 8.0-windowsservercore-ltsc2022 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/8.0/windowsservercore-ltsc2022/amd64/Dockerfile)
-7.0.18-windowsservercore-ltsc2022, 7.0-windowsservercore-ltsc2022 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/7.0/windowsservercore-ltsc2022/amd64/Dockerfile)
-6.0.29-windowsservercore-ltsc2022, 6.0-windowsservercore-ltsc2022 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/6.0/windowsservercore-ltsc2022/amd64/Dockerfile)
-
-##### .NET 9 Preview Tags
-Tag | Dockerfile
----------| ---------------
-9.0.0-preview.3-windowsservercore-ltsc2022, 9.0-preview-windowsservercore-ltsc2022 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/9.0/windowsservercore-ltsc2022/amd64/Dockerfile)
-
-## Nano Server, version 1809 amd64 Tags
-Tag | Dockerfile
----------| ---------------
-8.0.4-nanoserver-1809, 8.0-nanoserver-1809 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/8.0/nanoserver-1809/amd64/Dockerfile)
-7.0.18-nanoserver-1809, 7.0-nanoserver-1809, 7.0.18, 7.0 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/7.0/nanoserver-1809/amd64/Dockerfile)
-6.0.29-nanoserver-1809, 6.0-nanoserver-1809, 6.0.29, 6.0 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/6.0/nanoserver-1809/amd64/Dockerfile)
-
-##### .NET 9 Preview Tags
-Tag | Dockerfile
----------| ---------------
-9.0.0-preview.3-nanoserver-1809, 9.0-preview-nanoserver-1809 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/9.0/nanoserver-1809/amd64/Dockerfile)
-
-## Windows Server Core 2019 amd64 Tags
-Tag | Dockerfile
----------| ---------------
-8.0.4-windowsservercore-ltsc2019, 8.0-windowsservercore-ltsc2019 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/8.0/windowsservercore-ltsc2019/amd64/Dockerfile)
-7.0.18-windowsservercore-ltsc2019, 7.0-windowsservercore-ltsc2019 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/7.0/windowsservercore-ltsc2019/amd64/Dockerfile)
-6.0.29-windowsservercore-ltsc2019, 6.0-windowsservercore-ltsc2019 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/6.0/windowsservercore-ltsc2019/amd64/Dockerfile)
-
-##### .NET 9 Preview Tags
-Tag | Dockerfile
----------| ---------------
-9.0.0-preview.3-windowsservercore-ltsc2019, 9.0-preview-windowsservercore-ltsc2019 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime/9.0/windowsservercore-ltsc2019/amd64/Dockerfile)
-
-You can retrieve a list of all available tags for dotnet/runtime at https://mcr.microsoft.com/v2/dotnet/runtime/tags/list.
 <!--End of generated tags-->
 
-For tags contained in the old dotnet/core/runtime repository, you can retrieve a list of those tags at https://mcr.microsoft.com/v2/dotnet/core/runtime/tags/list.
+*Tags not listed in the table above are not supported. See the [Supported Tags Policy](https://github.com/dotnet/dotnet-docker/blob/main/documentation/supported-tags.md). See the [full list of tags](https://mcr.microsoft.com/v2/dotnet/runtime/tags/list) for all supported and unsupported tags.*
 
-*Tags not listed in the table above are not supported. See the [Supported Tags Policy](https://github.com/dotnet/dotnet-docker/blob/main/documentation/supported-tags.md)*
+## Support
 
-# Support
-
-## Lifecycle
+### Lifecycle
 
 * [Microsoft Support for .NET](https://github.com/dotnet/core/blob/main/support.md)
 * [Supported Container Platforms Policy](https://github.com/dotnet/dotnet-docker/blob/main/documentation/supported-platforms.md)
 * [Supported Tags Policy](https://github.com/dotnet/dotnet-docker/blob/main/documentation/supported-tags.md)
 
-## Image Update Policy
+### Image Update Policy
 
-* We update supported .NET images within 12 hours of any updates to their base images (e.g. debian:bookworm-slim, windows/nanoserver:ltsc2022, etc.).
-* We re-build all .NET images as part of releasing new versions of .NET including new major/minor versions and servicing.
-* Distroless images such as Ubuntu Chiseled have no base image, and as such will only be updated with .NET releases and CVE fixes as described below.
+* **Base Image Updates:** Images are re-built within 12 hours of any updates to their base images (e.g. debian:bookworm-slim, windows/nanoserver:ltsc2022, etc.).
+* **.NET Releases:** Images are re-built as part of releasing new .NET versions. This includes new major versions, minor versions, and servicing releases.
+* **Critical CVEs:** Images are re-built to pick up critical CVE fixes as described by the CVE Update Policy below.
+* **Monthly Re-builds:** Images are re-built monthly, typically on the second Tuesday of the month, in order to pick up lower-severity CVE fixes.
+* **Out-Of-Band Updates:** Images can sometimes be re-built when out-of-band updates are necessary to address critical issues. If this happens, new fixed version tags will be updated according to the [Fixed version tags documentation](https://github.com/dotnet/dotnet-docker/blob/main/documentation/supported-tags.md#fixed-version-tags).
 
-### CVE Update Policy
+#### CVE Update Policy
 
 .NET container images are regularly monitored for the presence of CVEs. A given image will be rebuilt to pick up fixes for a CVE when:
+
 * We detect the image contains a CVE with a [CVSS](https://nvd.nist.gov/vuln-metrics/cvss) score of "Critical"
 * **AND** the CVE is in a package that is added in our Dockerfile layers (meaning the CVE is in a package we explicitly install or any transitive dependencies of those packages)
 * **AND** there is a CVE fix for the package available in the affected base image's package repository.
 
-## Feedback
+Please refer to the [Security Policy](https://github.com/dotnet/dotnet-docker/blob/main/SECURITY.md) and [Container Vulnerability Workflow](https://github.com/dotnet/dotnet-docker/blob/main/documentation/vulnerability-reporting.md) for more detail about what to do when a CVE is encountered in a .NET image.
+
+### Feedback
 
 * [File an issue](https://github.com/dotnet/dotnet-docker/issues/new/choose)
 * [Contact Microsoft Support](https://support.microsoft.com/contactus/)
 
-# License
+## License
 
 * Legal Notice: [Container License Information](https://aka.ms/mcr/osslegalnotice)
 * [.NET license](https://github.com/dotnet/dotnet-docker/blob/main/LICENSE)
 * [Discover licensing for Linux image contents](https://github.com/dotnet/dotnet-docker/blob/main/documentation/image-artifact-details.md)
-* [Windows base image license](https://docs.microsoft.com/virtualization/windowscontainers/images-eula) (only applies to Windows containers)
-* [Pricing and licensing for Windows Server](https://www.microsoft.com/cloud-platform/windows-server-pricing)
+* [Windows base image license](https://learn.microsoft.com/virtualization/windowscontainers/images-eula) (only applies to Windows containers)
+* [Pricing and licensing for Windows Server](https://www.microsoft.com/windows-server/pricing)

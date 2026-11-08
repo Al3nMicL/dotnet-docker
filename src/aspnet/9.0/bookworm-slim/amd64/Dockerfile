@@ -4,18 +4,23 @@ ARG REPO=mcr.microsoft.com/dotnet/runtime
 FROM amd64/buildpack-deps:bookworm-curl AS installer
 
 # Retrieve ASP.NET Core
-RUN aspnetcore_version=9.0.0-preview.3.24172.13 \
-    && curl -fSL --output aspnetcore.tar.gz https://dotnetcli.azureedge.net/dotnet/aspnetcore/Runtime/$aspnetcore_version/aspnetcore-runtime-$aspnetcore_version-linux-x64.tar.gz \
-    && aspnetcore_sha512='319f2700c3a954a1e6e0dd01b45c18dfe7d3728fe175b82cbdbdd928c2f64c5fc6f53b7c44f753cf59fb7c32649fab95f0245e5077ae3f607b8f59b5e9cd417d' \
-    && echo "$aspnetcore_sha512  aspnetcore.tar.gz" | sha512sum -c - \
-    && tar -oxzf aspnetcore.tar.gz ./shared/Microsoft.AspNetCore.App \
-    && rm aspnetcore.tar.gz
+RUN aspnetcore_version=9.0.22 \
+    && curl --fail --show-error --location \
+        --remote-name https://builds.dotnet.microsoft.com/dotnet/aspnetcore/Runtime/$aspnetcore_version/aspnetcore-runtime-$aspnetcore_version-linux-x64.tar.gz \
+        --remote-name https://builds.dotnet.microsoft.com/dotnet/checksums/$aspnetcore_version-sha.txt \
+    && sed -i 's/\r$//' $aspnetcore_version-sha.txt \
+    && sha512sum -c $aspnetcore_version-sha.txt --ignore-missing \
+    && mkdir --parents /dotnet \
+    && tar --gzip --extract --no-same-owner --file aspnetcore-runtime-$aspnetcore_version-linux-x64.tar.gz --directory /dotnet ./shared/Microsoft.AspNetCore.App \
+    && rm \
+        aspnetcore-runtime-$aspnetcore_version-linux-x64.tar.gz \
+        $aspnetcore_version-sha.txt
 
 
 # ASP.NET Core image
-FROM $REPO:9.0.0-preview.3-bookworm-slim-amd64
+FROM $REPO:9.0.22-bookworm-slim-amd64
 
 # ASP.NET Core version
-ENV ASPNET_VERSION=9.0.0-preview.3.24172.13
+ENV ASPNET_VERSION=9.0.22
 
-COPY --from=installer ["/shared/Microsoft.AspNetCore.App", "/usr/share/dotnet/shared/Microsoft.AspNetCore.App"]
+COPY --from=installer ["/dotnet", "/usr/share/dotnet"]

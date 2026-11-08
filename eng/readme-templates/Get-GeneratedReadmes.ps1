@@ -21,7 +21,9 @@ function CopyReadme([string]$containerName, [string]$readmeRelativePath) {
 $onDockerfilesGenerated = {
     param($ContainerName)
 
-    if (-Not $Validate) {
+    # On Windows, ImageBuilder is run locally due to limitations with running Docker client within a container.
+    # Remove linux condition when https://github.com/dotnet/docker-tools/issues/159 is resolved.
+    if ($(Get-DockerOs) -eq "linux" -and -not $Validate) {
         CopyReadme $ContainerName "README.aspire-dashboard.md"
         CopyReadme $ContainerName "README.aspnet.md"
         CopyReadme $ContainerName "README.md"
@@ -32,23 +34,32 @@ $onDockerfilesGenerated = {
         CopyReadme $ContainerName "README.samples.md"
         CopyReadme $ContainerName "README.sdk.md"
 
-        CopyReadme $ContainerName ".mar/portal/README.aspire-dashboard.portal.md"
-        CopyReadme $ContainerName ".mar/portal/README.aspnet.portal.md"
-        CopyReadme $ContainerName ".mar/portal/README.monitor.portal.md"
-        CopyReadme $ContainerName ".mar/portal/README.monitor-base.portal.md"
-        CopyReadme $ContainerName ".mar/portal/README.runtime-deps.portal.md"
-        CopyReadme $ContainerName ".mar/portal/README.runtime.portal.md"
-        CopyReadme $ContainerName ".mar/portal/README.samples.portal.md"
-        CopyReadme $ContainerName ".mar/portal/README.sdk.portal.md"
+        CopyReadme $ContainerName ".portal-docs/docker-hub/README.aspire-dashboard.md"
+        CopyReadme $ContainerName ".portal-docs/docker-hub/README.aspnet.md"
+        CopyReadme $ContainerName ".portal-docs/docker-hub/README.monitor.md"
+        CopyReadme $ContainerName ".portal-docs/docker-hub/README.monitor-base.md"
+        CopyReadme $ContainerName ".portal-docs/docker-hub/README.runtime-deps.md"
+        CopyReadme $ContainerName ".portal-docs/docker-hub/README.runtime.md"
+        CopyReadme $ContainerName ".portal-docs/docker-hub/README.samples.md"
+        CopyReadme $ContainerName ".portal-docs/docker-hub/README.sdk.md"
+
+        CopyReadme $ContainerName ".portal-docs/mar/README.dashboard.portal.md"
+        CopyReadme $ContainerName ".portal-docs/mar/README.aspnet.portal.md"
+        CopyReadme $ContainerName ".portal-docs/mar/README.monitor.portal.md"
+        CopyReadme $ContainerName ".portal-docs/mar/README.monitor-base.portal.md"
+        CopyReadme $ContainerName ".portal-docs/mar/README.runtime-deps.portal.md"
+        CopyReadme $ContainerName ".portal-docs/mar/README.runtime.portal.md"
+        CopyReadme $ContainerName ".portal-docs/mar/README.samples.portal.md"
+        CopyReadme $ContainerName ".portal-docs/mar/README.sdk.portal.md"
     }
 }
 
 function Invoke-GenerateReadme {
     param ([string] $Manifest, [string] $SourceBranch)
 
-    & $PSScriptRoot/../common/Invoke-ImageBuilder.ps1 `
+    & $PSScriptRoot/../docker-tools/Invoke-ImageBuilder.ps1 `
         -ImageBuilderArgs `
-            "generateReadmes --manifest $Manifest --source-branch $SourceBranch$customImageBuilderArgs --var branch=$SourceBranch 'https://github.com/dotnet/dotnet-docker'" `
+            "generateReadmes --manifest $Manifest --source-branch $SourceBranch$customImageBuilderArgs --var branch=$SourceBranch 'https://github.com/dotnet/dotnet-docker' --no-version-logging" `
         -OnCommandExecuted $onDockerfilesGenerated
 }
 

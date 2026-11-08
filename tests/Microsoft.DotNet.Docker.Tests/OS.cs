@@ -2,44 +2,46 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-namespace Microsoft.DotNet.Docker.Tests
+#nullable enable
+
+namespace Microsoft.DotNet.Docker.Tests;
+
+internal static class OS
 {
-    public class OS
-    {
-        // Alpine
-        public const string Alpine = "alpine";
-        public const string Alpine318 = $"{Alpine}3.18";
-        public const string Alpine319 = $"{Alpine}3.19";
+    // String constants for special tagging cases (appliance images)
+    public const string Alpine = "alpine";
+    public const string AzureLinuxDistroless = "azurelinux-distroless";
+    public const string MarinerDistroless = "cbl-mariner-distroless";
+    public const string UbuntuChiseled = "ubuntu-chiseled";
 
-        // Debian
-        public const string Bookworm = "bookworm";
-        public const string BookwormSlim = $"{Bookworm}{SlimSuffix}";
-        public const string Bullseye = "bullseye";
-        public const string BullseyeSlim = $"{Bullseye}{SlimSuffix}";
+    // Alpine
+    public static OSInfo AlpineFloating { get; } = new(OSType.Linux, OSFamily.Alpine, "");
+    public static OSInfo Alpine324 { get; } = AlpineFloating with { Version = "3.24" };
 
-        // Mariner
-        public const string Mariner = "cbl-mariner";
+    // Azure Linux
+    public static OSInfo AzureLinux30 { get; } = new(OSType.Linux, OSFamily.AzureLinux, "3.0");
+    public static OSInfo AzureLinux30Distroless { get; } = AzureLinux30 with { IsDistroless = true };
+    public static OSInfo AzureLinux40 { get; } = new(OSType.Linux, OSFamily.AzureLinux, "4.0", IsUnstable: true);
+    public static OSInfo AzureLinux40Distroless { get; } = AzureLinux40 with { IsDistroless = true };
 
-        public const string MarinerDistroless = $"{Mariner}-distroless";
-        public const string Mariner20 = $"{Mariner}2.0";
-        public const string Mariner20Distroless = $"{Mariner20}-distroless";
+    // Debian
+    public static OSInfo BookwormSlim { get; } = new(OSType.Linux, OSFamily.Debian, "12");
 
-        // Ubuntu
-        public const string Bionic = "bionic";
-        public const string Focal = "focal";
-        public const string Jammy = "jammy";
-        public const string JammyChiseled = $"{Jammy}-chiseled";
-        public const string UbuntuChiseled = "ubuntu-chiseled";
+    // Ubuntu
+    public static OSInfo Jammy { get; } = new(OSType.Linux, OSFamily.Ubuntu, "22.04");
+    public static OSInfo JammyChiseled { get; } = Jammy with { IsDistroless = true };
+    public static OSInfo Noble { get; } = new(OSType.Linux, OSFamily.Ubuntu, "24.04");
+    public static OSInfo NobleChiseled { get; } = Noble with { IsDistroless = true };
+    public static OSInfo Resolute { get; } = new(OSType.Linux, OSFamily.Ubuntu, "26.04");
+    public static OSInfo ResoluteChiseled { get; } = Resolute with { IsDistroless = true };
 
-        // Windows
-        public const string NanoServer = "nanoserver";
-        public const string NanoServer1809 = $"{NanoServer}-1809";
-        public const string NanoServerLtsc2022 = $"{NanoServer}-ltsc2022";
-        public const string ServerCore = "windowsservercore";
-        public const string ServerCoreLtsc2019 = $"{ServerCore}-ltsc2019";
-        public const string ServerCoreLtsc2022 = $"{ServerCore}-ltsc2022";
+    // Windows - Nano Server
+    public static OSInfo NanoServer1809 { get; } = new(OSType.Windows, OSFamily.NanoServer, "1809");
+    public static OSInfo NanoServerLtsc2022 { get; } = NanoServer1809 with { Version = "LTSC 2022" };
+    public static OSInfo NanoServerLtsc2025 { get; } = NanoServer1809 with { Version = "LTSC 2025" };
 
-        // Helpers
-        public const string SlimSuffix = "-slim";
-    }
+    // Windows - Server Core
+    public static OSInfo ServerCoreLtsc2019 { get; } = new(OSType.Windows, OSFamily.WindowsServerCore, "LTSC 2019");
+    public static OSInfo ServerCoreLtsc2022 { get; } = ServerCoreLtsc2019 with { Version = "LTSC 2022" };
+    public static OSInfo ServerCoreLtsc2025 { get; } = ServerCoreLtsc2019 with { Version = "LTSC 2025" };
 }
